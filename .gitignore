@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+.Rprofile
+.DS_Store
+.idea
+mlruns/
+renv/
+renv.lock

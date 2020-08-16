@@ -1,48 +1,139 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
+# shiny
 library(shiny)
+library(shinydashboard)
+library(shinydashboardPlus)
+library(shinyWidgets)
+library(shinythemes)
+library(shinyjs)
 
-# Define UI for application that draws a histogram
-ui <- fluidPage(
+# utilities
+library(config)
 
-    # Application title
-    titlePanel("Old Faithful Geyser Data"),
+# data
+library(tidyverse)
 
-    # Sidebar with a slider input for number of bins 
-    sidebarLayout(
-        sidebarPanel(
-            sliderInput("bins",
-                        "Number of bins:",
-                        min = 1,
-                        max = 50,
-                        value = 30)
-        ),
+# Use this structure 
+# https://shiny.rstudio.com/gallery/real-estate-investment.html
 
-        # Show a plot of the generated distribution
-        mainPanel(
-           plotOutput("distPlot")
+# UI ----
+ui <- navbarPage(
+  
+  # 1. SETTINGS ----
+  
+  # 1.1 Title ----
+  title = "Shiny Business Analytics",
+  # 1.2 Theme ----
+  theme = shinytheme("paper"),
+  # 1.3 Behavior ----
+  # fluid = TRUE, 
+  collapsible = TRUE,
+  
+  # 2. PREDICTIVE FUNDRAISING ----
+  
+  tabPanel(
+    title = "Predictive Fundraising",
+    
+    # 2.1 Overview ----
+    div(
+      class = "container",
+      div(
+        class = "container",
+        h1("Direct-Mail Fundraising", tags$small("A Predictive Approach")),
+      ),
+      div(
+        class = "col-sm-4",
+        style = "display: flex;",
+        div(
+          class = "panel panel-default",
+          div(
+            class = "panel-heading",
+            style = "text-align: center; padding: 20px;",
+            icon("info", class = "fa-4x fa-boarder")
+          ),
+          div(
+            class = "panel-body",
+            style = "padding: 20px;",
+            h4("Situation"
+            ),
+            p("Placeholder for all the text that will be written here."),
+            h4("Complication / Observation"
+            ),
+            p("Outline what is needed."),
+            h4("Resolution"
+            ),
+            p("Outline what is needed.")
+          )
         )
+      ),
+      
+      # 2.2 Results ----
+      div(
+        class = "col-sm-4",
+        style = "display: flex;",
+        div(
+          class = "panel panel-default",
+          div(
+            class = "panel-heading",
+            style = "text-align: center; padding: 20px;",
+            icon("file-code-o", class = "fa-4x fa-boarder")
+          ),
+          div(
+            class = "panel-body",
+            style = "padding: 20px;",
+            h4("Situation"
+            ),
+            p("Placeholder for all the text that will be written here."),
+            h4("Goals"
+            ),
+            p("Outline what is needed.")
+          )
+        )
+      ),
+      
+      # 2.3 App ----
+      div(
+        class = "col-sm-4",
+        style = "display: flex;",
+        div(
+          class = "panel panel-default",
+          div(
+            class = "panel-heading",
+            style = "text-align: center; padding: 20px;",
+            icon("bar-chart", class = "fa-4x fa-boarder")
+          ),
+          div(
+            class = "panel-body",
+            style = "padding: 20px;",
+            h4("Situation"
+            ),
+            p("Placeholder for all the text that will be written here."),
+            h4("Goals"
+            ),
+            p("Outline what is needed.")
+          )
+        )
+      )
     )
+    
+    
+  ),
+  
+  tabPanel(
+    title = "The Analysis",
+    p("Placeholder for Rmarkdown HTML doc from the write-up")
+  ),
+
+  tabPanel(
+    title = "The App",
+    p("Placeholder for the analyzer.")
+  )
+                 
 )
 
-# Define server logic required to draw a histogram
+# SERVER ----
 server <- function(input, output) {
 
-    output$distPlot <- renderPlot({
-        # generate bins based on input$bins from ui.R
-        x    <- faithful[, 2]
-        bins <- seq(min(x), max(x), length.out = input$bins + 1)
-
-        # draw the histogram with the specified number of bins
-        hist(x, breaks = bins, col = 'darkgray', border = 'white')
-    })
+    
 }
 
 # Run the application 

@@ -1,0 +1,9 @@
+.jumbotron {
+  color: white;
+  background-image: url("stock_landscape.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  max-height: 500px;
+}

@@ -1,0 +1,3 @@
+default:
+  data_dir: 00_data
+  data_file: Fundraising.csv
